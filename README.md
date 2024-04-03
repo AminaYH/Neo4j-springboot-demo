@@ -1,5 +1,6 @@
 # Neo4j-springboot-demo
 #this the database
+-------------------------------------------------------------------------------------------------------------
 CREATE (s1:Server {
 uri:'mastodon.social', title:'Mastodon', registrations:true,
 short_description:'The original server operated by the Mastodon gGmbH non-profit'})
@@ -30,3 +31,4 @@ CREATE
 
 CREATE
 (s1)-[:CONNECTED_TO]->(s2)
+-------------------------------------------------------------------------------------------------------------
