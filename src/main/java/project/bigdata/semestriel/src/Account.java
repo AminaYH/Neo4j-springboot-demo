@@ -13,8 +13,8 @@ public class Account {
     @Id
     private final String id; // (1)
     @Property("display_name")
-    private final String displayName;
-    private final String username;// (2)
+    private  String displayName;
+    private String username;// (2)
     @Relationship(type = "REGISTERED_ON", direction = Relationship.Direction.OUTGOING)
     private Server registeredOn;
 
@@ -26,4 +26,7 @@ public class Account {
         this.username = username;
         this.displayName = displayName;
     }
+
+
+
 }

@@ -2,10 +2,13 @@ package project.bigdata.semestriel.src;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.crossstore.ChangeSetPersister;
+import org.springframework.data.neo4j.core.Neo4jOperations;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @RequestMapping("/api")
 
@@ -13,9 +16,10 @@ import java.util.Map;
 public class AccountController {
 
     private final AccountService accountService;
-
-    public AccountController(AccountService accountService) {
+private final AccountRepository accountRepository;
+    public AccountController(AccountService accountService, AccountRepository accountRepository) {
         this.accountService = accountService;
+        this.accountRepository = accountRepository;
     }
     @GetMapping("/getAll")
     public List<Account> getAllAccounts() {
@@ -30,9 +34,15 @@ public class AccountController {
         Map<String, Object> registeredOn = (Map<String, Object>) accountMap.get("registeredOn");
         return accountService.createAccount(id, username, displayName, registeredOn);
     }
-    @DeleteMapping("/{username}")
-    public void deleteAcount(Account account){
+    @DeleteMapping("/{id}")
+    public void deleteAccount(@PathVariable String id ){
+            accountService.deleteAccount(id);
 
     }
 
+    @PostMapping("/accounts/{id}")
+    public Account updateAccount(@PathVariable String id, @RequestBody Map<String, Object> payload) {
+        return accountService.updateAccount(id,payload);
+
+    }
 }
