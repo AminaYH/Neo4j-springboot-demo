@@ -13,12 +13,12 @@ import java.util.List;
 @Node("Server")
 public class Server {
     @Id
-    private final String uri; // (1)
-    private final String title;
+    private  String uri; // (1)
+    private  String title;
     @Property("registrations")
-    private final Boolean registrationsAllowed;
+    private  Boolean registrationsAllowed;
     @Property("short_description")
-    private final String shortDescription;
+    private  String shortDescription;
     @Relationship("CONNECTED_TO")
     private List<Server> connectedServers;
 
@@ -28,5 +28,7 @@ public class Server {
         this.registrationsAllowed = registrationsAllowed;
         this.shortDescription = shortDescription;
     }
+
+
     // constructor, etc.
 }

@@ -11,4 +11,5 @@ import java.util.Optional;
 public interface ServerRepository extends Neo4jRepository<Server, String> {
     @Query("MATCH (s:Server {uri: $uri}) RETURN s")
     Optional<Server> findByUri(@Param("uri") String uri);
+
 }

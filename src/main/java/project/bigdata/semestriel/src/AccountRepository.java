@@ -9,5 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface AccountRepository extends Neo4jRepository<Account, String> {
+    @Query("MATCH (a:Account)-[r:REGISTERED_ON]->(s:Server {uri: $serverUri}) DELETE r")
+    void deleteRegisteredOnRelationship(@Param("serverUri") String serverUri);
 
 }

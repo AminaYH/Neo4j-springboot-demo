@@ -31,8 +31,7 @@ private final AccountRepository accountRepository;
         String id = (String) accountMap.get("id");
         String username = (String) accountMap.get("username");
         String displayName = (String) accountMap.get("displayName");
-        Map<String, Object> registeredOn = (Map<String, Object>) accountMap.get("registeredOn");
-        return accountService.createAccount(id, username, displayName, registeredOn);
+        return accountService.createAccount(id, username, displayName, accountMap);
     }
     @DeleteMapping("/{id}")
     public void deleteAccount(@PathVariable String id ){
